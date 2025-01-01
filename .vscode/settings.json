@@ -1,0 +1,8 @@
+{
+    "CMake.configureArgs": [
+        "-DCMAKE_TOOLCHAIN_FILE=/Users/paraspokharel/Programming/QC-Sim/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    ],
+    "CMake.buildDirectory": "${workspaceFolder}/build",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "cmake.cmakePath":"/opt/homebrew/bin/cmake"
+}
