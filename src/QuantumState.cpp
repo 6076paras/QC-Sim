@@ -5,8 +5,8 @@
 #include <iostream>
 #include <cmath>
 #include "QuantumState.hpp"
-QuantumState::QuantumState(int nQbit){
-    this->size = pow(2,nQbit);
+QuantumState::QuantumState(int nQubit){
+    this->size = pow(2,nQubit);
     complexXVector.resize(size);
     initialize();
 }

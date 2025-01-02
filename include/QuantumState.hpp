@@ -8,7 +8,7 @@
 #include <Eigen/Dense>
 class QuantumState {
 public:
-    QuantumState(int size);
+    QuantumState(int nQubit);
     int size;
     Eigen::VectorXcd complexXVector;
     void initialize();
