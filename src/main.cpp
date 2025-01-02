@@ -2,14 +2,9 @@
 #include "QuantumState.hpp"
 int main() {
     // testing
-    int qubitSize = 2;
-    QuantumState qs(qubitSize);
+    int qubitsize = 2;
+    QuantumState qs(qubitsize);
     std::cout << "Initial State Vector:" << std::endl;
     qs.displayState();
-
-    for (int i = 1; i <= 5; i++) {
-
-        std::cout << "i = " << i << std::endl;
-    }
     return 0;
 }
