@@ -7,23 +7,14 @@
 
 #include <Eigen/Dense>
 class QuantumState {
-private:
-    void normalize(Eigen::VectorXcd complexVector);
 public:
-    QuantumState();
-    // n dimensional complex vector
-    Eigen::VectorXcd complexVector(int size);
-
-    // state vector
-    Eigen::VectorXcd stateVector();
-
-    // initialize
-    void initializeStateVector(const Eigen::VectorXcd& complexVector);
-
-
-
-
-
+    QuantumState(int size);
+    int size;
+    Eigen::VectorXcd complexXVector;
+    void initialize();
+    void normalize();
+    Eigen::VectorXcd getStateVector();
+    void displayState();
 };
 
 
