@@ -7,12 +7,14 @@
 
 #include <Eigen/Dense>
 
+template<typename MatrixClass = Eigen::MatrixXcd>
 class QuantumGates {
 public:
-    static Eigen::Matrix2cd X();
-    static Eigen::Matrix2cd Y();
-    static Eigen::Matrix2cd Z();
+    static MatrixClass X();
+    static MatrixClass Y();
+    static MatrixClass Z();
 };
 
+#include "QuantumGates.inl"
 
 #endif //QC_SIM_QUANTUMGATES_HPP

@@ -6,19 +6,12 @@ set(CMAKE_TOOLCHAIN_FILE "/Users/paraspokharel/Programming/QC-Sim/vcpkg/scripts/
 set(CMAKE_CXX_STANDARD 20)
 
 # target define
-add_executable(QC_Sim src/main.cpp)
-
-# collect class source files (excluding main.cpp)
-file(GLOB_RECURSE CLASS_SOURCES 
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+set(SOURCES
+    src/main.cpp
+    src/QuantumState.cpp
 )
-list(FILTER CLASS_SOURCES EXCLUDE REGEX ".*main\\.cpp$")
 
-# add the class sources to the target separately
-target_sources(${PROJECT_NAME}
-    PRIVATE
-        ${CLASS_SOURCES}
-)
+add_executable(QC_Sim ${SOURCES})
 
 # target header files
 target_include_directories(QC_Sim PRIVATE include)

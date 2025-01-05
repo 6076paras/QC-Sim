@@ -1,29 +1,34 @@
 //
 // Created by Paras Pokharel on 2025-01-01.
 //
+#ifndef QC_SIM_QUANTUMGATES_INL
+#define QC_SIM_QUANTUMGATES_INL
 
 #include "QuantumGates.hpp"
+#include <complex>
 
-Eigen::Matrix2cd QuantumGates::X() {
-    Eigen::Matrix2cd X ;
+template<typename MatrixClass>  
+MatrixClass QuantumGates<MatrixClass>::X() {
+    MatrixClass X = MatrixClass::Zero(2,2);
     X << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0),
         std::complex<double>(1.0, 0.0), std::complex<double>(0.0, 0.0);
     return X;
 
 }
-
-Eigen::Matrix2cd QuantumGates::Y() {
-    Eigen::Matrix2cd Y;
+template<typename MatrixClass>  
+MatrixClass QuantumGates<MatrixClass>::Y() {
+    MatrixClass Y = MatrixClass::Zero(2,2);;
     Y << std::complex<double>(0.0, 0.0), std::complex<double>(0.0, -1.0),
         std::complex<double>(0.0, 1.0), std::complex<double>(0.0, 0.0);
     return Y;
 
 }
-
-Eigen::Matrix2cd QuantumGates::Z() {
-    Eigen::Matrix2cd Z;
+template<typename MatrixClass>  
+MatrixClass QuantumGates<MatrixClass>::Z() {
+    MatrixClass Z = MatrixClass::Zero(2,2);;
     Z << std::complex<double>(1.0, 0.0), std::complex<double>(0.0, 0.0),
              std::complex<double>(0.0, 0.0), std::complex<double>(-1.0, 0.0);
     return Z;
 
 }
+#endif

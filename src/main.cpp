@@ -10,6 +10,5 @@ int main() {
 
     // multiply with gates
 
-
     return 0;
 }
