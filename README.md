@@ -1,2 +1,4 @@
-A Quantum Computer Simulator
+A simple Quantum Computer Simulator in C++ 
+
+# Project Status 🚧
 
