@@ -31,4 +31,15 @@ MatrixClass QuantumGates<MatrixClass>::Z() {
     return Z;
 
 }
+
+template<typename MatrixClass>  
+MatrixClass QuantumGates<MatrixClass>::CNOT() {
+    MatrixClass CNOT = MatrixClass::Zero(4,4);;
+    CNOT << std::complex<double>(1.0, 0.0), std::complex<double>(0.0, 0.0), std::complex<double>(0.0, 0.0), std::complex<double>(0.0, 0.0),
+            std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0), std::complex<double>(0.0, 0.0), std::complex<double>(0.0, 0.0),
+            std::complex<double>(0.0, 0.0), std::complex<double>(0.0, 0.0), std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0),
+            std::complex<double>(0.0, 0.0), std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0), std::complex<double>(0.0, 0.0);
+    return CNOT;
+
+}
 #endif

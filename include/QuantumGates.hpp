@@ -13,6 +13,7 @@ public:
     static MatrixClass X();
     static MatrixClass Y();
     static MatrixClass Z();
+    static MatrixClass CNOT();
 };
 
 #include "QuantumGates.inl"
