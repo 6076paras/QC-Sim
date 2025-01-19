@@ -14,6 +14,7 @@ public:
     static MatrixClass Y();
     static MatrixClass Z();
     static MatrixClass CNOT();
+    static MatrixClass H();
 };
 
 #include "QuantumGates.inl"

@@ -8,7 +8,8 @@ int main() {
     std::cout << "Initial State Vector:" << std::endl;
     qs.displayState();
 
-    // multiply with gates
+    // test and print gates 
+    std::cout << QuantumGates<>::H();
 
     return 0;
 }
