@@ -2,7 +2,10 @@
 // Created by Paras Pokharel on 2025-01-01.
 //
 
- 
+ /* TODO: 
+ * - option for dirac notation
+ * - switching opton
+ */
 #include "QuantumState.hpp"
 QuantumState::QuantumState(int nQubit){
     this->size = pow(2,nQubit);
@@ -39,8 +42,3 @@ void QuantumState::display() {
     std::cout << "\n";
 }
 
-/* TODO: 
- * - better vectorial display of stateVector
- * - option for dirac notation
- * - switching opton
- */
