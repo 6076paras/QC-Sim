@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(SOURCES
     src/main.cpp
     src/QuantumState.cpp
+    src/QuantumCircuit.cpp
 )
 
 add_executable(QC_Sim ${SOURCES})

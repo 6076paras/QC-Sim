@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>   
+#include <iostream>
 /**
  * @brief Quantum Circuit class that acts as container 
  * Provides methods to:
