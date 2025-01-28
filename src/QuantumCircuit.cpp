@@ -30,7 +30,9 @@ void QuantumCircuit::CNOT(int target, int control){
 // display the container visually
 void QuantumCircuit::display(){
 
-    std::cout << "\nGiven Circuit \n";
+    std::cout << "\n╔════════════════════════╗";
+    std::cout << "\n║     Quantum Circuit    ║";
+    std::cout << "\n╚════════════════════════╝\n\n";
     
     // loop throguh "a" qubit, and add operators belonging to it
     for (int q = 1; q < this->nQubit + 1 ; q++){
@@ -65,5 +67,6 @@ void QuantumCircuit::display(){
             }
         std::cout << "\n";
     }
-
+    std::cout << "\n"; 
 }
+
