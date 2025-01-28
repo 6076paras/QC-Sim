@@ -11,20 +11,28 @@
  * - Execute quantum operations
  */
 class QuantumCircuit {
-    
-    public:
-        explicit QuantumCircuit(int nQubits); 
+
+    private:
         int nQubit;
-        void H(int qubit);
-        void Z(int qubit);
-        void X(int qubit);
-        void CNOT(int control, int target);
-        void display();
         struct unitOperator {
             std::string gateName;
             int target;
             int control = -1;
         };
         std::vector<unitOperator> container;
-    private:
+    
+    public:
+        explicit QuantumCircuit(int nQubits); 
+
+        // gate operations
+        void H(int qubit);
+        void Z(int qubit);
+        void X(int qubit);
+        void CNOT(int control, int target);
+        
+        // circuit operations
+        void display();
+        void clear(); 
+        
+        
 };

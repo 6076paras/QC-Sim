@@ -1,12 +1,6 @@
 //
 // Created by Paras Pokharel on 2025-01-01.
 //
-#ifndef QC_SIM_QUANTUMGATES_INL
-#define QC_SIM_QUANTUMGATES_INL
-
-#include "QuantumGates.hpp"
-#include <complex>
-
 template<typename MatrixClass>  
 MatrixClass QuantumGates<MatrixClass>::X() {
     MatrixClass X = MatrixClass::Zero(2,2);
@@ -50,4 +44,3 @@ MatrixClass QuantumGates<MatrixClass>::H(){
          std::complex<double>(1.0 / std::sqrt(2), 0.0), std::complex<double>(-1.0 / std::sqrt(2), 0.0);
     return H;
 }
-#endif

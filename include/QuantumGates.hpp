@@ -1,11 +1,10 @@
 //
 // Created by Paras Pokharel on 2025-01-01.
 //
-
-#ifndef QC_SIM_QUANTUMGATES_HPP
-#define QC_SIM_QUANTUMGATES_HPP
-
+#pragma once
 #include <Eigen/Dense>
+#include <complex>
+#include <cmath>
 
 template<typename MatrixClass = Eigen::MatrixXcd>
 class QuantumGates {
@@ -19,4 +18,4 @@ public:
 
 #include "QuantumGates.inl"
 
-#endif //QC_SIM_QUANTUMGATES_HPP
+

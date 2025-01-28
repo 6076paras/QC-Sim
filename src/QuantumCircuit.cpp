@@ -70,3 +70,7 @@ void QuantumCircuit::display(){
     std::cout << "\n"; 
 }
 
+// clear
+void QuantumCircuit::clear() {
+    container.clear();
+}

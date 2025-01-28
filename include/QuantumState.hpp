@@ -1,21 +1,18 @@
 //
 // Created by Paras Pokharel on 2025-01-01.
 //
-
-#ifndef QC_SIM_QUANTUMSTATE_HPP
-#define QC_SIM_QUANTUMSTATE_HPP
-
+#pragma once
 #include <Eigen/Dense>
 class QuantumState {
-public:
-    QuantumState(int nQubit);
+private:
     int size;
     Eigen::VectorXcd complexXVector;
+
+public:
+    QuantumState(int nQubit);
     void initialize();
     void normalize();
     Eigen::VectorXcd getStateVector();
-    void displayState();
+    void display();
 };
 
-
-#endif //QC_SIM_QUANTUMSTATE_HPP

@@ -16,7 +16,12 @@ void QuantumState::initialize() {
     complexXVector(0) = std::complex<double>(1.0,0.0);
 }
 
-void QuantumState::displayState(){
+void QuantumState::display(){
     std::cout << complexXVector;
 }
 
+/* TODO: 
+ * - better vectorial display of stateVector
+ * - option for dirac notation
+ * - switching opton
+ */
