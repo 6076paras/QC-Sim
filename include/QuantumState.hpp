@@ -3,10 +3,14 @@
 //
 #pragma once
 #include <Eigen/Dense>
+#include <iostream>
+#include <cmath>
+#include <iomanip> 
 class QuantumState {
 private:
     int size;
     Eigen::VectorXcd complexXVector;
+
 
 public:
     QuantumState(int nQubit);

@@ -6,9 +6,7 @@ int main() {
     // testing
     int qubitsize = 2;
     QuantumState qs(qubitsize);
-    std::cout << "Initial State Vector:" << std::endl;
-    qs.displayState();
-    std::cout << "\n";
+    qs.display();
 
     // test and print gates 
     std::cout << QuantumGates<>::H(); 
