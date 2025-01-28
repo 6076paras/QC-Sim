@@ -18,27 +18,46 @@ void QuantumState::initialize() {
     this->complexXVector(0) = std::complex<double>(1.0,0.0);
 }
 
-void QuantumState::display() {
+
+void QuantumState::display(Format format) {
     std::cout << "\n╔═══════════════════════════════╗";
     std::cout << "\n║      Quantum State Vector     ║";
     std::cout << "\n╚═══════════════════════════════╝\n\n";
 
+    switch(format) {
+        case vectorFormat:
+            displayVector();
+            break;
+        case diracFormat:
+            displayDirac();
+            break;
+    }
+}
+
+void QuantumState::displayVector() {
     for (int i = 0; i < size; i++) {
-        
-        // start brackets for each row
         std::cout << (i == 0 ? "⎡" : i == size-1 ? "⎣" : "⎢");
-        
-        // get complex number
         std::complex<double> z = complexXVector(i);
-        
-        // format: (a + bi)
         std::cout << std::fixed << std::setprecision(3) 
                  << " (" << std::setw(6) << z.real() 
                  << " + " << std::setw(6) << z.imag() << "i) ";
-        
-        // end brackets for each row
         std::cout << (i == 0 ? "⎤\n" : i == size-1 ? "⎦\n" : "⎥\n");
     }
     std::cout << "\n";
+}
+
+void QuantumState::displayDirac() {
+    bool first = true;
+    for (int i = 0; i < size; i++) {
+        std::complex<double> z = complexXVector(i);
+        if (std::abs(z) > 1e-10) {
+            if (!first) std::cout << " + ";
+            std::cout << "(" << std::fixed << std::setprecision(3) 
+                     << z.real() << " + " << z.imag() << "i)|" 
+                     << i << "⟩";
+            first = false;
+        }
+    }
+    std::cout << "\n\n";
 }
 

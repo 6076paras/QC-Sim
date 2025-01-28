@@ -6,17 +6,27 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip> 
+
 class QuantumState {
 private:
     int size;
     Eigen::VectorXcd complexXVector;
-
+    
+    // helper methods for display
+    void displayVector();
+    void displayDirac();
 
 public:
+    enum Format {
+        diracFormat,
+        vectorFormat,
+        DEFAULT = vectorFormat
+    };
+
     QuantumState(int nQubit);
     void initialize();
     void normalize();
     Eigen::VectorXcd getStateVector();
-    void display();
+    void display(Format format = DEFAULT);
 };
 
