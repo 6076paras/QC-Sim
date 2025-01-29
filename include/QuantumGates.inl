@@ -55,58 +55,43 @@ MatrixClass QuantumGates<MatrixClass>::I() {
 }
 
 template<typename MatrixClass>
-MatrixClass QuantumGates<MatrixClass>::getRepresentation(std::string stringGate, int nQubit, int target, int control){
-    
-    // get equivlent gates from string
+MatrixClass QuantumGates<MatrixClass>::getRepresentation(std::string stringGate, int nQubit, int target, int control) {
+    // get equivalent gates from string
     MatrixClass Gate;
-    if (stringGate == "H"){
-        Gate = H();
-    }
-    if (stringGate == "Z"){
-        Gate = Z();
-    }
-    if (stringGate == "X"){
-        Gate = X();
-    }
-    if (stringGate == "Y"){
-        Gate = Y();
-    }
-    if (stringGate == "CNOT"){
-        Gate = CNOT();
-    }
-    
-    // init
-    Eigen::MatrixXcd result = Eigen::MatrixXcd::Identity(1,1);
-    
+    MatrixClass result = MatrixClass::Identity(1,1);
 
-    // special handling for CNOT
-        if (control != -1) {  
-            for (int i = 1; i < nQubit + 1; i++) {
-                if (i == control || i == target) {
-                    // apply CNOT to control-target pair
-                    if (i == std::min(control, target)) {
-                        result = Eigen::kroneckerProduct(result, Gate);
-                        i++; 
-                    }
-                } else {
-                    // identity for other qubits
-                    MatrixClass I = MatrixClass::Identity(2,2);
-                    result = Eigen::kroneckerProduct(result, I);
+    if (stringGate == "CNOT") {
+        Gate = CNOT();
+        // special handling for CNOT
+        for (int i = 1; i < nQubit + 1; i++) {
+            if (i == control || i == target) {
+                if (i == std::min(control, target)) {
+                    result = Eigen::kroneckerProduct(result, Gate);
+                    i++; 
                 }
+            } else {
+                MatrixClass I = MatrixClass::Identity(2,2);
+                result = Eigen::kroneckerProduct(result, I);
             }
-            return result;
         }
-    // loop through each qubit and find the gate representaion 
-    for (int i = 1 ; i < nQubit + 1  ; i++){
+    } else {
+        // handle single-qubit gates
+        if (stringGate == "H") Gate = H();
+        if (stringGate == "X") Gate = X();
+        if (stringGate == "Y") Gate = Y();
+        if (stringGate == "Z") Gate = Z();
         
-        // if qubit, use Gate else, I
-        if (target == i){
-            result = Eigen::kroneckerProduct(result, Gate);
-        } else {
-            MatrixClass I = MatrixClass::Identity(2,2);
-            result = Eigen::kroneckerProduct(result, I);
+        // build tensor product
+        for (int i = 1; i < nQubit + 1; i++) {
+            if (target == i) {
+                result = Eigen::kroneckerProduct(result, Gate);
+            } else {
+                MatrixClass I = MatrixClass::Identity(2,2);
+                result = Eigen::kroneckerProduct(result, I);
+            }
         }
     }
-    return result
+    
+    return result;
 }
 
