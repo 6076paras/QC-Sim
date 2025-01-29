@@ -1,7 +1,6 @@
 //
 // Created by Paras Pokharel on 2025-01-01.
 //
-#include "QuantumGates.hpp"
 template<typename MatrixClass>  
 MatrixClass QuantumGates<MatrixClass>::X() {
     MatrixClass X = MatrixClass::Zero(2,2);

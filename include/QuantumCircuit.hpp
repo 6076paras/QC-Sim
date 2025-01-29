@@ -1,7 +1,10 @@
 #pragma once
 #include <iostream>
 #include <vector>   
-#include <iostream>
+
+// forward declaration for circular dependency
+class QuantumState;
+
 /**
  * @brief Quantum Circuit class that acts as container 
  * Provides methods to:
@@ -11,6 +14,7 @@ class QuantumCircuit {
 
     private:
         int nQubit;
+        QuantumState* state;
         struct unitOperator {
             std::string gateName;
             int target;
@@ -20,6 +24,10 @@ class QuantumCircuit {
     
     public:
         explicit QuantumCircuit(int nQubits); 
+        ~QuantumCircuit();
+
+        int getNQubits() const { return nQubit; }
+        QuantumState* getState() { return state; }
 
         // gate operations
         // TODO: chain links

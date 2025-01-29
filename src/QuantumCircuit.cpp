@@ -1,11 +1,18 @@
 #include "QuantumCircuit.hpp"
+#include "QuantumState.hpp"  
 #include <iostream>
 
 
 // initialize a circuit with n qubits
-QuantumCircuit::QuantumCircuit(int nQubits) {
-    this->nQubit = nQubits;
-} 
+QuantumCircuit::QuantumCircuit(int nQubits) 
+    : nQubit(nQubits) 
+{
+    state = new QuantumState(this);
+}
+
+QuantumCircuit::~QuantumCircuit() {
+    delete state;  
+}
 
 // add H gate to the container
 void QuantumCircuit::H(int qubit){

@@ -1,9 +1,11 @@
 //
 // Created by Paras Pokharel on 2025-01-01.
 //
+
 #include "QuantumState.hpp"
-QuantumState::QuantumState(int nQubit){
-    this->size = pow(2,nQubit);
+QuantumState::QuantumState(QuantumCircuit* circuit) {
+    this->circuit = circuit;
+    this->size = pow(2, circuit->getNQubits());
     this->complexXVector.resize(size);
     initialize();
 }

@@ -2,6 +2,7 @@
 // Created by Paras Pokharel on 2025-01-01.
 //
 #pragma once
+#include "QuantumCircuit.hpp"
 #include <Eigen/Dense>
 #include <iostream>
 #include <cmath>
@@ -11,6 +12,7 @@ class QuantumState {
 private:
     int size;
     Eigen::VectorXcd complexXVector;
+    QuantumCircuit* circuit;  
     
     // helper methods for display
     void displayVector();
@@ -23,7 +25,7 @@ public:
         DEFAULT = vectorFormat
     };
 
-    QuantumState(int nQubit);
+    QuantumState(QuantumCircuit* circuit);  
     void initialize();
     void normalize();
     Eigen::VectorXcd getStateVector();

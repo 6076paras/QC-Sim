@@ -3,16 +3,13 @@
 #include "QuantumState.hpp"
 #include "QuantumGates.hpp"
 int main() {
-    // testing
-    int qubitsize = 2;
-    QuantumState qs(qubitsize);
-    qs.display();
-
-    // test and print gates 
-    std::cout << QuantumGates<>::H(); 
-
-    // test cicuit
+    // Create circuit first
     QuantumCircuit qc(2);
+    
+    // Use circuit's state
+    qc.getState()->display();
+
+    // test circuit operations
     qc.X(1);
     qc.CNOT(1,2);
     qc.display();
