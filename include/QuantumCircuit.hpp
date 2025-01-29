@@ -5,9 +5,6 @@
 /**
  * @brief Quantum Circuit class that acts as container 
  * Provides methods to:
- * - Add quantum gates
- * - Build circuits
- * - Display circuit diagram
  * - Execute quantum operations
  */
 class QuantumCircuit {

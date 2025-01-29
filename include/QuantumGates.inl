@@ -44,3 +44,11 @@ MatrixClass QuantumGates<MatrixClass>::H(){
          std::complex<double>(1.0 / std::sqrt(2), 0.0), std::complex<double>(-1.0 / std::sqrt(2), 0.0);
     return H;
 }
+
+template<typename MatrixClass>  
+MatrixClass QuantumGates<MatrixClass>::I() {
+    MatrixClass Y = MatrixClass::Zero(2,2);;
+    I << std::complex<double>(1.0, 0.0), std::complex<double>(0.0, 1.0),
+        std::complex<double>(1.0, 0.0), std::complex<double>(1.0, 0.0);
+    return I;
+}
