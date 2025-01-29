@@ -4,7 +4,7 @@
 
 #include "QuantumState.hpp"
 QuantumState::QuantumState(QuantumCircuit* circuit) {
-    this->circuit = std::unique_ptr<QuantumCircuit>(circuit);
+    this->circuit = circuit; 
     this->size = pow(2, circuit->getNQubits());
     this->complexXVector.resize(size);
     initialize();

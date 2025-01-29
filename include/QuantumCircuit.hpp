@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>   
-
+#include <memory>  
 // forward declaration for circular dependency
 class QuantumState;
 
@@ -14,7 +14,7 @@ class QuantumCircuit {
 
     private:
         int nQubit;
-        QuantumState* state;
+        std::unique_ptr<QuantumState> state;
         struct unitOperator {
             std::string gateName;
             int target;
@@ -24,10 +24,9 @@ class QuantumCircuit {
     
     public:
         explicit QuantumCircuit(int nQubits); 
-        ~QuantumCircuit();
 
         int getNQubits() const { return nQubit; }
-        QuantumState* getState() { return state; }
+        QuantumState& getState() { return *state; }
 
         // gate operations
         // TODO: chain links
