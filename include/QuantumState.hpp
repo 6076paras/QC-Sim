@@ -6,13 +6,14 @@
 #include <Eigen/Dense>
 #include <iostream>
 #include <cmath>
-#include <iomanip> 
+#include <iomanip>
+#include <memory>  
 
 class QuantumState {
 private:
     int size;
     Eigen::VectorXcd complexXVector;
-    QuantumCircuit* circuit;  
+    std::shared_ptr<QuantumCircuit> circuit;  
     
     // helper methods for display
     void displayVector();
