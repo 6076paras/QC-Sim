@@ -25,6 +25,7 @@ class QuantumCircuit {
         explicit QuantumCircuit(int nQubits); 
 
         // gate operations
+        // TODO: chain links
         void H(int qubit);
         void Z(int qubit);
         void X(int qubit);
