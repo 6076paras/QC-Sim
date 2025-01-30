@@ -6,9 +6,10 @@
 
 // initialize a circuit with n qubits
 QuantumCircuit::QuantumCircuit(int nQubits) 
-    : nQubit(nQubits) 
-{
-    state = std::make_unique<QuantumState>(this);  // Changed to make_unique
+    : nQubit(nQubits) {
+
+        // instantiate state
+        state = std::make_unique<QuantumState>(*this);
 }
 
 // add H gate to the container
@@ -63,7 +64,6 @@ void QuantumCircuit::display(){
                         }
                     }
                 }
-                // print empty line  
                 else {
                 std::cout << "─────";  
                 }

@@ -3,9 +3,10 @@
 //
 
 #include "QuantumState.hpp"
-QuantumState::QuantumState(QuantumCircuit* circuit) {
-    this->circuit = circuit; 
-    this->size = pow(2, circuit->getNQubits());
+#include "QuantumCircuit.hpp"
+QuantumState::QuantumState(QuantumCircuit& circuit) {
+    auto nQubit = circuit.nQubit;
+    this->size = pow(2, nQubit);
     this->complexXVector.resize(size);
     initialize();
 }

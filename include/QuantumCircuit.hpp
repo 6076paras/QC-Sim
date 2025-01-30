@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>   
 #include <memory>  
+
 // forward declaration for circular dependency
 class QuantumState;
 
@@ -13,8 +14,6 @@ class QuantumState;
 class QuantumCircuit {
 
     private:
-        int nQubit;
-        std::unique_ptr<QuantumState> state;
         struct unitOperator {
             std::string gateName;
             int target;
@@ -23,10 +22,11 @@ class QuantumCircuit {
         std::vector<unitOperator> container;
     
     public:
-        explicit QuantumCircuit(int nQubits); 
+        int nQubit;
+        std::unique_ptr<QuantumState> state;
+        QuantumCircuit(int nQubits); 
 
-        int getNQubits() const { return nQubit; }
-        QuantumState& getState() { return *state; }
+        
 
         // gate operations
         // TODO: chain links

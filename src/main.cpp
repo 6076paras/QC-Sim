@@ -7,7 +7,7 @@ int main() {
     QuantumCircuit qc(2);
     
     // Use circuit's state
-    qc.getState().display();
+    qc.state->display();
 
     // test circuit operations
     qc.X(1);

@@ -13,7 +13,6 @@ class QuantumState {
 private:
     int size;
     Eigen::VectorXcd complexXVector;
-    QuantumCircuit* circuit;  // Changed to raw pointer since QuantumState doesn't own QuantumCircuit
     
     // helper methods for display
     void displayVector();
@@ -26,10 +25,9 @@ public:
         DEFAULT = vectorFormat
     };
 
-    explicit QuantumState(QuantumCircuit* circuit);  // Keep raw pointer in constructor
+    explicit QuantumState(QuantumCircuit& circuit); 
     void initialize();
     void normalize();
-    Eigen::VectorXcd getStateVector();
     void display(Format format = DEFAULT);
 };
 
