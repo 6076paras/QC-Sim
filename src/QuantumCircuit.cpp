@@ -1,12 +1,13 @@
 #include "QuantumCircuit.hpp"
+#include "QuantumGates.hpp"
 #include "QuantumState.hpp"  
 #include <iostream>
 #include <memory>  
 
 
 // initialize a circuit with n qubits
-QuantumCircuit::QuantumCircuit(int nQubits) 
-    : nQubit(nQubits) {
+QuantumCircuit::QuantumCircuit(int nQubit) 
+    : nQubit(nQubit) {
 
         // instantiate state
         state = std::make_unique<QuantumState>(*this);
@@ -31,6 +32,22 @@ void QuantumCircuit::Z(int qubit){
 void QuantumCircuit::CNOT(int target, int control){
     this->container.push_back({"CNOT", target, control}); 
 }
+
+// return the combined transformation
+Eigen::MatrixXcd QuantumCircuit::getCombTransform(QuantumGates<>& gateObj){
+
+    // init
+    Eigen::MatrixXcd result = Eigen::MatrixXcd::Identity(pow(2,this->nQubit), pow(2,this->nQubit));
+
+    // loop and multiply
+    for ( unitOperator& op : this->container){
+        // get representation
+        Eigen::MatrixXcd representation = gateObj.getRepresentation(op.gateName, this->nQubit, op.target, op.control);
+        result *= representation;
+    }
+    return result;
+}
+
 
 // display the container visually
 void QuantumCircuit::display(){

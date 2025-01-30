@@ -1,7 +1,9 @@
 #pragma once
+#include "QuantumGates.hpp"
 #include <iostream>
 #include <vector>   
 #include <memory>  
+#include <Eigen/Dense>
 
 // forward declaration for circular dependency
 class QuantumState;
@@ -20,11 +22,12 @@ class QuantumCircuit {
             int control = -1;
         };
         std::vector<unitOperator> container;
+        Eigen::MatrixXcd getCombTransform(QuantumGates<>& gateObj);
     
     public:
         int nQubit;
         std::unique_ptr<QuantumState> state;
-        QuantumCircuit(int nQubits); 
+        QuantumCircuit(int nQubit); 
 
         
 
