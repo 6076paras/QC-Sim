@@ -95,3 +95,10 @@ void QuantumCircuit::display(){
 void QuantumCircuit::clear() {
     container.clear();
 }
+
+// transform the state vector from dynamic state object
+void QuantumCircuit::transformState(){
+    QuantumGates<> gates;
+    Eigen::MatrixXcd finalTransform = getCombTransform(gates);
+    state->transformState(finalTransform);
+}

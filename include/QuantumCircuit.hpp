@@ -29,9 +29,10 @@ class QuantumCircuit {
         std::unique_ptr<QuantumState> state;
         QuantumCircuit(int nQubit); 
 
-        
+        // transform dynamic state object
+        void transformState();
 
-        // gate operations
+        // add gates to circuit
         // TODO: chain links
         void H(int qubit);
         void Z(int qubit);

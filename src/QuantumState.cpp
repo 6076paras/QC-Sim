@@ -7,13 +7,13 @@
 QuantumState::QuantumState(QuantumCircuit& circuit) {
     auto nQubit = circuit.nQubit;
     this->size = pow(2, nQubit);
-    this->complexXVector.resize(size);
+    this->stateVector.resize(size);
     initialize();
 }
 // initialize to (|0>)^n state
 void QuantumState::initialize() {
 
-    this->complexXVector(0) = std::complex<double>(1.0,0.0);
+    this->stateVector(0) = std::complex<double>(1.0,0.0);
 }
 
 // option to choose display format
@@ -35,7 +35,7 @@ void QuantumState::display(Format format) {
 void QuantumState::displayVector() {
     for (int i = 0; i < size; i++) {
         std::cout << (i == 0 ? "⎡" : i == size-1 ? "⎣" : "⎢");
-        std::complex<double> z = complexXVector(i);
+        std::complex<double> z = stateVector(i);
         std::cout << std::fixed << std::setprecision(3) 
                  << " (" << std::setw(6) << z.real() 
                  << " + " << std::setw(6) << z.imag() << "i) ";
@@ -48,7 +48,7 @@ void QuantumState::displayVector() {
 void QuantumState::displayDirac() {
     bool first = true;
     for (int i = 0; i < size; i++) {
-        std::complex<double> z = complexXVector(i);
+        std::complex<double> z = stateVector(i);
         if (std::abs(z) > 1e-10) {
             if (!first) std::cout << " + ";
             std::cout << "(" << std::fixed << std::setprecision(3) 
@@ -60,3 +60,7 @@ void QuantumState::displayDirac() {
     std::cout << "\n\n";
 }
 
+// transfrom the state vector
+void QuantumState::transformState(Eigen::MatrixXcd& combTransform) {
+    stateVector = combTransform * stateVector;  // Matrix * vector, not vector * matrix
+}

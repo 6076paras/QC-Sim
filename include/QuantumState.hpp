@@ -12,21 +12,21 @@
 class QuantumState {
 private:
     int size;
-    Eigen::VectorXcd complexXVector;
+    Eigen::VectorXcd stateVector;
     
     // helper methods for display
     void displayVector();
     void displayDirac();
-
-public:
     enum Format {
         diracFormat,
         vectorFormat,
         DEFAULT = vectorFormat
     };
 
+public:
     explicit QuantumState(QuantumCircuit& circuit); 
     void initialize();
+    void transformState(Eigen::MatrixXcd& combTransfrom);
     void normalize();
     void display(Format format = DEFAULT);
 };
