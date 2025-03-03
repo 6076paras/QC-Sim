@@ -14,5 +14,9 @@ int main() {
     qc.CNOT(1,2);
     qc.display();
 
+    // transform and display
+    qc.transformState();
+    qc.state->display();
+
     return 0;
 }

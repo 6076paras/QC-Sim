@@ -70,7 +70,7 @@ MatrixClass QuantumGates<MatrixClass>::getRepresentation(std::string stringGate,
                 }
             } else {
                 MatrixClass I = MatrixClass::Identity(2,2);
-                result = Eigen::kroneckerProduct(result, I);
+                result = Eigen::kroneckerProduct(result, I).eval();
             }
         }
     } else {
@@ -83,10 +83,14 @@ MatrixClass QuantumGates<MatrixClass>::getRepresentation(std::string stringGate,
         // build tensor product
         for (int i = 1; i < nQubit + 1; i++) {
             if (target == i) {
-                result = Eigen::kroneckerProduct(result, Gate);
+                // Debug prints before kronecker product
+                std::cout << "\nDebug before kronecker product:";
+                std::cout << "\nResult matrix (" << result.rows() << "x" << result.cols() << "):\n" << result;
+                std::cout << "\nGate matrix (" << Gate.rows() << "x" << Gate.cols() << "):\n" << Gate << std::endl;
+                result = Eigen::kroneckerProduct(result, Gate).eval();
             } else {
                 MatrixClass I = MatrixClass::Identity(2,2);
-                result = Eigen::kroneckerProduct(result, I);
+                result = Eigen::kroneckerProduct(result, I).eval();
             }
         }
     }

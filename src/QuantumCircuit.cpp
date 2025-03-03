@@ -39,6 +39,10 @@ Eigen::MatrixXcd QuantumCircuit::getCombTransform(QuantumGates<>& gateObj){
     // init
     Eigen::MatrixXcd result = Eigen::MatrixXcd::Identity(pow(2,this->nQubit), pow(2,this->nQubit));
 
+    // debug
+    std::cout << "Init dimensions: " << result.rows() << "x" << result.cols() << std::endl;
+    std::cout << "Size: " << this->nQubit << std::endl;
+
     // loop and multiply
     for ( unitOperator& op : this->container){
         // get representation

@@ -5,6 +5,7 @@
 #include <Eigen/Dense>
 #include <complex>
 #include <cmath>
+#include <iostream>
 #include <unsupported/Eigen/KroneckerProduct>
 
 template<typename MatrixClass = Eigen::MatrixXcd>
